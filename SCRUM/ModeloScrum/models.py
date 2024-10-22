@@ -50,7 +50,7 @@ class Tarea(models.Model):
         constraints = [
             models.CheckConstraint(check=models.Q(prioridad__gte=0), name="prioridad_no_negativa"),
             models.CheckConstraint(check=models.Q(esfuerzo_estimado__gte=0), name="esfuerzo_estimado_no_negativo"),
-            models.CheckConstraint(check=models.Q(estado__in=[Tarea.POR_HACER, Tarea.EN_PROGRESO, Tarea.COMPLETADA]), name="estado_valido_tarea"),
+            models.CheckConstraint(check=models.Q(estado__in=[POR_HACER, EN_PROGRESO, COMPLETADA]), name="estado_valido_tarea"),
         ]
 
     def __str__(self):
