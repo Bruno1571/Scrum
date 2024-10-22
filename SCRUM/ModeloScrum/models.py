@@ -1,10 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+POR_HACER = 'POR_HACER'
+EN_PROGRESO = 'EN_PROGRESO'
+COMPLETADA = 'COMPLETADA'
+
 class Tarea(models.Model):
-    POR_HACER = 'POR_HACER'
-    EN_PROGRESO = 'EN_PROGRESO'
-    COMPLETADA = 'COMPLETADA'
 
     ESTADO_CHOICES = [
         (POR_HACER, 'Por Hacer'),
