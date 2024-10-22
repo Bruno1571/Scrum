@@ -15,7 +15,7 @@ class Tarea(models.Model):
 
     titulo = models.CharField(max_length=200)
     descripcion = models.TextField(blank=True)
-    criterios_aceptacion = models.TextField(blank=True)
+    criterios_aceptacion = models.TextField()
     prioridad = models.IntegerField()
     
     estado = models.CharField(
@@ -29,15 +29,13 @@ class Tarea(models.Model):
     responsable = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
+        null=True
     )
     
     sprint_asignado = models.ForeignKey(
         'Sprint',
         on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
+        null=True
     )
     
     fecha_creacion = models.DateTimeField(auto_now_add=True)
@@ -45,7 +43,7 @@ class Tarea(models.Model):
     
     dependencias = models.ManyToManyField('self', blank=True, symmetrical=False)
     
-    bloqueadores = models.TextField(blank=True, null=True)
+    bloqueadores = models.TextField(null=True)
 
     class Meta:
         constraints = [
@@ -68,8 +66,8 @@ class Epica(models.Model):
     ]
 
     nombre = models.CharField(max_length=200)
-    descripcion = models.TextField(blank=True, null=True)
-    criterios_aceptacion = models.TextField(blank=True, null=True)
+    descripcion = models.TextField(blank=True)
+    criterios_aceptacion = models.TextField()
     
     estado = models.CharField(
         max_length=12,
@@ -80,16 +78,15 @@ class Epica(models.Model):
     responsable = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
+        null=True
     )
     
-    tareas_asociadas = models.ManyToManyField('Tarea', blank=True)
+    tareas_asociadas = models.ManyToManyField('Tarea')
     
     esfuerzo_estimado_total = models.IntegerField()
-    
-    fecha_inicio = models.DateField(null=True, blank=True)
-    fecha_fin = models.DateField(null=True, blank=True)
+    #Se puede tener una épica que aún no ha comenzado o que está en progreso y no tiene una fecha de finalización definida.
+    fecha_inicio = models.DateField(blank=True)
+    fecha_fin = models.DateField(blank=True)
     
     progreso = models.FloatField()
     
@@ -110,7 +107,7 @@ class Epica(models.Model):
 
 class Sprint(models.Model):
     nombre = models.CharField(max_length=200)
-    objetivo = models.TextField(blank=True, null=True)
+    objetivo = models.TextField()
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
     
@@ -119,8 +116,7 @@ class Sprint(models.Model):
     scrum_master = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
+        null=True
     )
     
     equipo_desarrollo = models.ManyToManyField(User, blank=True, related_name='sprints_equipo')
