@@ -14,8 +14,8 @@ class Tarea(models.Model):
     ]
 
     titulo = models.CharField(max_length=200)
-    descripcion = models.TextField(blank=True, null=False)
-    criterios_aceptacion = models.TextField(blank=True, null=True)
+    descripcion = models.TextField(blank=True)
+    criterios_aceptacion = models.TextField(blank=True)
     prioridad = models.IntegerField()
     
     estado = models.CharField(
@@ -60,9 +60,6 @@ class Tarea(models.Model):
 #MODELO EPICA
 
 class Epica(models.Model):
-    POR_HACER = 'POR_HACER'
-    EN_PROGRESO = 'EN_PROGRESO'
-    COMPLETADA = 'COMPLETADA'
 
     ESTADO_CHOICES = [
         (POR_HACER, 'Por Hacer'),
