@@ -20,7 +20,7 @@ class Tarea(models.Model):
     
     estado = models.CharField(
         max_length=12,
-        choices=ESTADO_CHOICES,
+        choices=ESTADO_CHOICES, 
         default=POR_HACER,
     )
     
@@ -133,3 +133,4 @@ class Sprint(models.Model):
 
     def __str__(self):
         return self.nombre
+#comentario
