@@ -85,7 +85,7 @@ class Epica(models.Model):
     
     esfuerzo_estimado_total = models.IntegerField()
     #Se puede tener una épica que aún no ha comenzado o que está en progreso y no tiene una fecha de finalización definida.
-    fecha_inicio = models.DateField(blank=True)
+    fecha_inicio = models.DateField()
     fecha_fin = models.DateField(blank=True)
     
     progreso = models.FloatField()
@@ -119,8 +119,8 @@ class Sprint(models.Model):
         null=True
     )
     
-    equipo_desarrollo = models.ManyToManyField(User, blank=True, related_name='sprints_equipo')
-    backlog_sprint = models.ManyToManyField('Tarea', blank=True, related_name='backlogs')
+    equipo_desarrollo = models.ManyToManyField(User, related_name='sprints_equipo')
+    backlog_sprint = models.ManyToManyField('Tarea',  related_name='backlogs')
     
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     fecha_actualizacion = models.DateTimeField(auto_now=True)
