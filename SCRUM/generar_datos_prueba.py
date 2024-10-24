@@ -26,12 +26,18 @@ def crear_usuarios(num_usuarios=10):
 def crear_tareas(usuarios, num_tareas=30):
     tareas = []
     for i in range(1, num_tareas + 1):
+        # Lógica para establecer el estado de la tarea
+        if i <= 5:  # Solo las primeras 5 tareas serán 'COMPLETADA'
+            estado = COMPLETADA
+        else:
+            estado = random.choice([POR_HACER, EN_PROGRESO])
+
         tarea = Tarea.objects.create(
             titulo=f"Tarea {i}",
             descripcion=f"Descripción de la Tarea {i}",
             criterios_aceptacion=f"Criterios de aceptación para Tarea {i}",
             prioridad=random.randint(1, 5),
-            estado=random.choice([POR_HACER, EN_PROGRESO]),
+            estado=estado,
             esfuerzo_estimado=random.randint(1, 10),
             responsable=random.choice(usuarios)
         )
@@ -42,8 +48,8 @@ def crear_tareas(usuarios, num_tareas=30):
             num_dependencias = random.randint(1, 2)
             dependencias = random.sample(tareas[:i-1], num_dependencias)
             for dep in dependencias:
-                tarea.dependencias.add(dep)  # Asumiendo que hay un campo ManyToMany para dependencias
-
+                tarea.dependencias.add(dep)  
+                
     print("Tareas creadas con dependencias.")
     return tareas
 
@@ -95,6 +101,11 @@ def crear_sprints(usuarios, tareas, num_sprints=6):
             velocidad=random.randint(5, 15),
             scrum_master=random.choice(usuarios)
         )
+
+        # Asignar usuarios al equipo de desarrollo
+        num_miembros_equipo = random.randint(3, 5)  # Elegir entre 3 y 5 miembros
+        equipo_desarrollo = random.sample(usuarios, num_miembros_equipo)
+        sprint.equipo_desarrollo.set(equipo_desarrollo)  # Asignar miembros al equipo de desarrollo
 
         # Asignar algunas tareas al sprint (pueden ser de las tareas creadas)
         tareas_asignadas = random.sample(tareas, random.randint(5, 10))
