@@ -1,5 +1,5 @@
 # Proyecto SCRUM
-Es una aplicación basada en la metodología SCRUM para gestionar proyectos, con modelos construidos en Django que se relacionan entre sí para reflejar el funcionamiento de esta metodología ágil. Consta de 3 modelos principales: Tarea, Epica y Sprint, los cuales interactuan a su vez con el modelo de usuario que propociona por defecto Django. No cuenta con vistas, pues su uso se limita a realizar consultas con el Shell. 
+Es una aplicación basada en la metodología SCRUM para gestionar proyectos, con modelos construidos en Django que se relacionan entre sí para reflejar el funcionamiento de esta metodología ágil. Consta de 3 modelos principales: Tarea, Epica y Sprint, los cuales interactuan a su vez con el modelo de usuario que proporciona por defecto Django. No cuenta con vistas, pues su uso se limita a realizar consultas con el Shell. 
 
 ## Instalación
 1. Clonar el repositorio.
