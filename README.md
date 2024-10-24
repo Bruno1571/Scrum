@@ -26,9 +26,13 @@ A continuación se muestran algunos de los comandos que pueden ser utilizados pa
 Primero hay que ejecutar el comando python manage.py Shell para así abrir el Shell de Django. U
 Una vez hecho, antes de pasar a las consultas, hay que importar las constantes y los modelos como están a continuación:
 
+Antes de usar las consultas importar las constantes y los modelos como estan a continuacion
+
 from ModeloScrum.models import Sprint, Tarea, Epica, POR_HACER, EN_PROGRESO, COMPLETADA
 from django.contrib.auth.models import User
 from django.db.models import Count, Sum
+
+TENER CUIDADO CON LA IDENTACION DE LAS CONSULTAS SINO NO FUNCIONAN
 
 1. Obtener todas las tareas asignadas a un usuario específico.
    
