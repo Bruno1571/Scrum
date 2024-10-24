@@ -20,13 +20,18 @@ Es una aplicación basada en la metodología SCRUM para gestionar proyectos, con
 7. Aplicar las migraciones de la base de datos.
    El comando migrate aplicará las migraciones a la base de datos local, creando las tablas necesarias para que el proyecto funcione correctamente:
    python manage.py migrate
+   
+## Cargar datos
+*La base de datos esta ya cargada*
+
+Para cargar datos hay que ubicarse en la carpeta Scrum y ejecutar >python generar_datos_prueba.py  
 
 ## Consultas
 A continuación se muestran algunos de los comandos que pueden ser utilizados para consultar los datos almacenados en la base de datos.
-Primero hay que ejecutar el comando python manage.py Shell para así abrir el Shell de Django. U
+Primero hay que ejecutar el comando python manage.py Shell para así abrir el Shell de Django. 
 Una vez hecho, antes de pasar a las consultas, hay que importar las constantes y los modelos como están a continuación:
 
-Antes de usar las consultas importar las constantes y los modelos como estan a continuacion
+
 
 from ModeloScrum.models import Sprint, Tarea, Epica, POR_HACER, EN_PROGRESO, COMPLETADA
 from django.contrib.auth.models import User
