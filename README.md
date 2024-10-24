@@ -34,7 +34,9 @@ Una vez hecho, antes de pasar a las consultas, hay que importar las constantes y
 
 
 from ModeloScrum.models import Sprint, Tarea, Epica, POR_HACER, EN_PROGRESO, COMPLETADA
+
 from django.contrib.auth.models import User
+
 from django.db.models import Count, Sum
 
 TENER CUIDADO CON LA IDENTACION DE LAS CONSULTAS SINO NO FUNCIONAN
